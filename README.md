@@ -16,13 +16,14 @@ Project seeks to build upon the data and model from the Store Item Demand Foreca
 
 To keep things tidy the project structure is split by funtion:
 
-- `/`
-  - `/input` (input data)
-  - `/model` (compiled models)
-  - `/output` (model output data)
-  - `/tests` (any unittest)
-  - `/src` (source code for model deployment)
-  - `/analysis` (any interactive jupyter notebook or other exploratory work)
+- `./`
+  - `./input` (input data)
+  - `./model` (compiled models)
+  - `./output` (model output data)
+  - `./tests` (any unittest)
+  - `./src` (source code for model deployment)
+  - `./analysis` (any interactive jupyter notebook or other exploratory work)
+  - `./infra` (any project specific deployment code)
 
 # Data
 
