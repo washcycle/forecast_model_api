@@ -39,9 +39,23 @@ unzip demand-forecasting-kernels-only.zip  -d inputs
 - Wrapped latest FastAPI version around model and created predict endpoints.
 - Add isort to organize imports and ran on the src and analysis directory.
 
-# Deployment
+## Model Deployment
 
-- Multistage docker image, build .venv and conly copy required files and no build utils.
+k8s is a common container orchestrator witha healthy ecosystem.
+
+For repeatability and demo purposes i'll use minikube with Tailscale ingress to deploy the model and makei t accesible to the public internet. This can also be restirtied to a intranet as well.
+
+The `infra` folder contains a makefile that creates a minikube cluster and sets up the tailscale operator.
+
+The operator can deploy ingress to your tailnet, and there is a flag to make them `funnel` for public access.
+
+*Install minikube and create cluster for this project*
+`make minikube`
+
+*Install the Tailscale operator*
+`TS_CLIENT_ID=your_client_id TS_CLIENT_SECRET=your_client_secret make install-tailscale-operator`
+
+Used terraform for IaC (Infrastructure as Code) to deploy the model inside the local minikube cluster. Since this is a public repo, the image doens't need authentication to pull, but I added terraform to show how pull secrets can be used for private registries.
 
 # Contributions
 

@@ -7,12 +7,14 @@ from fastapi import FastAPI
 from fastapi.concurrency import asynccontextmanager
 from pydantic import BaseModel, Field
 
+# Valid Store IDs and Item IDs
+
 
 # Define input schema
 class ForecastInput(BaseModel):
-    date: datetime = Field(json_schema_extra={"example": "2013-01-01"})
-    store: int = Field()
-    item: int = Field()
+    date: datetime = Field(examples=["2013-01-01"], description="Date for the forecast")
+    store: int = Field(examples=[1, 2, 3], description="Store ID")
+    item: int = Field(examples=[1, 2, 3], description="Item ID")
 
 
 # Load model (update path if needed)
@@ -24,6 +26,7 @@ if not MODEL_PATH or not os.path.isfile(MODEL_PATH):
 
 # The linters like this to a dict type
 resources = {}
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
