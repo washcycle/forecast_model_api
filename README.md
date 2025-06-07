@@ -57,6 +57,53 @@ The operator can deploy ingress to your tailnet, and there is a flag to make the
 
 Used terraform for IaC (Infrastructure as Code) to deploy the model inside the local minikube cluster. Since this is a public repo, the image doens't need authentication to pull, but I added terraform to show how pull secrets can be used for private registries.
 
+## API Features
+
+*Input validation:* Item ID and Store ID validation based on what was in the trianing data, withh response with proper errors messages if ID exceeds allowed values.
+
+Exampe:
+
+*Input*
+```json
+{
+  "date": "2017-01-01",
+  "store": 1000,
+  "item": 1000
+}
+```
+
+*Response*
+```json
+{
+  "detail": [
+    {
+      "type": "value_error",
+      "loc": [
+        "body",
+        "store"
+      ],
+      "msg": "Value error, Invalid store ID: 1000",
+      "input": 1000,
+      "ctx": {
+        "error": {}
+      }
+    },
+    {
+      "type": "value_error",
+      "loc": [
+        "body",
+        "item"
+      ],
+      "msg": "Value error, Invalid item ID: 1000",
+      "input": 1000,
+      "ctx": {
+        "error": {}
+      }
+    }
+  ]
+}
+```
+
 # Contributions
 
 Commits use https://www.conventionalcommits.org/en/v1.0.0/

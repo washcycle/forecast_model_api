@@ -5,16 +5,32 @@ import lightgbm as lgb
 import pandas as pd
 from fastapi import FastAPI
 from fastapi.concurrency import asynccontextmanager
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
-# Valid Store IDs and Item IDs
+# Valid Store IDs and Item IDs for validation
+VALID_STORE_IDS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+VALID_ITEM_IDS = list(range(1, 51))
 
 
 # Define input schema
 class ForecastInput(BaseModel):
     date: datetime = Field(examples=["2013-01-01"], description="Date for the forecast")
-    store: int = Field(examples=[1, 2, 3], description="Store ID")
-    item: int = Field(examples=[1, 2, 3], description="Item ID")
+    store: int = Field(examples=VALID_STORE_IDS, description="Store ID")
+    item: int = Field(examples=VALID_ITEM_IDS[:3], description="Item ID")
+
+    @field_validator("store")
+    @classmethod
+    def validate_store(cls, value):
+        if value not in VALID_STORE_IDS:
+            raise ValueError(f"Invalid store ID: {value}")
+        return value
+
+    @field_validator("item")
+    @classmethod
+    def validate_item(cls, value):
+        if value not in VALID_ITEM_IDS:
+            raise ValueError(f"Invalid item ID: {value}")
+        return value
 
 
 # Load model (update path if needed)
