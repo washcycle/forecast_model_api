@@ -1,10 +1,11 @@
+import os
+from datetime import datetime
+
+import lightgbm as lgb
+import pandas as pd
 from fastapi import FastAPI
 from fastapi.concurrency import asynccontextmanager
 from pydantic import BaseModel
-from datetime import datetime
-import pandas as pd
-import lightgbm as lgb
-import os
 
 
 # Define input schema

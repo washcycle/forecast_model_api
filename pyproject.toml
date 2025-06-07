@@ -23,3 +23,6 @@ analysis = [
     "scikit-learn>=1.7.0",
     "statsmodels>=0.14.4",
 ]
+dev = [
+    "isort>=6.0.1",
+]
