@@ -10,7 +10,7 @@ from pydantic import BaseModel, Field
 
 # Define input schema
 class ForecastInput(BaseModel):
-    date: datetime = Field(json_schema_extra={"example": "2023-10-01"})
+    date: datetime = Field(json_schema_extra={"example": "2013-01-01"})
     store: int = Field()
     item: int = Field()
 
