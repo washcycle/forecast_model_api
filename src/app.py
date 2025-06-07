@@ -5,14 +5,14 @@ import lightgbm as lgb
 import pandas as pd
 from fastapi import FastAPI
 from fastapi.concurrency import asynccontextmanager
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 # Define input schema
 class ForecastInput(BaseModel):
-    date: str
-    store: int
-    item: int
+    date: datetime = Field(json_schema_extra={"example": "2023-10-01"})
+    store: int = Field()
+    item: int = Field()
 
 
 # Load model (update path if needed)
@@ -43,18 +43,15 @@ app = FastAPI(lifespan=lifespan)
 
 @app.post("/predict")
 def forecast(input: ForecastInput):
-    dt = datetime.strptime(input.date, "%Y-%m-%d")
     features = {
         "store": input.store,
         "item": input.item,
-        "month": dt.month,
-        "day": dt.weekday(),
-        "year": dt.year,
+        "month": input.date.month,
+        "day": input.date.weekday(),
+        "year": input.date.year,
     }
     X = pd.DataFrame([features])
-    # TODO: Replace with actual model prediction
     y_pred = resources["model"].predict(X)[0]
-    y_pred = 0  # Dummy value
     return {"sales": y_pred}
 
 
