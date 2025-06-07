@@ -25,12 +25,17 @@ if not MODEL_PATH or not os.path.isfile(MODEL_PATH):
 # The linters like this to a dict type
 resources = {}
 
+# Global variable to track the status of the API
+status = None
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Load the ML model
     resources["model"] = lgb.Booster(model_file=MODEL_PATH)
+    status = "ready"
     yield
+    status = None
 
 
 app = FastAPI(lifespan=lifespan)
@@ -51,3 +56,10 @@ def forecast(input: ForecastInput):
     y_pred = resources["model"].predict(X)[0]
     y_pred = 0  # Dummy value
     return {"sales": y_pred}
+
+
+@app.get("/status")
+def health():
+    if status is None:
+        return {"status": "not ready"}
+    return {"status": status}
