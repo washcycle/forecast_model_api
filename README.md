@@ -57,6 +57,22 @@ The operator can deploy ingress to your tailnet, and there is a flag to make the
 
 Used terraform for IaC (Infrastructure as Code) to deploy the model inside the local minikube cluster. Since this is a public repo, the image doens't need authentication to pull, but I added terraform to show how pull secrets can be used for private registries.
 
+## API
+
+https://sales-forecaster.tigris-vibes.ts.net/
+
+**API Docs**
+
+https://sales-forecaster.tigris-vibes.ts.net/docs
+
+API Predict
+
+https://sales-forecaster.tigris-vibes.ts.net/predict
+
+API Status 
+
+https://sales-forecaster.tigris-vibes.ts.net/status
+
 ## API Features
 
 *Input validation:* Item ID and Store ID validation based on what was in the trianing data, withh response with proper errors messages if ID exceeds allowed values.

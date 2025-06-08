@@ -126,10 +126,10 @@ resource "kubernetes_ingress_v1" "model_ingress" {
     name      = "tailscale-model-ingress"
     namespace = kubernetes_namespace.apis.metadata[0].name
     annotations = {
-      "tailscale.com/tags" = "tag:k8s,tag:public-access-allowed"
+      "tailscale.com/tags"   = "tag:k8s,tag:public-access-allowed"
+      "tailscale.com/funnel" = "true"
     }
   }
-
   spec {
     ingress_class_name = "tailscale"
     tls {
