@@ -43,7 +43,7 @@ unzip demand-forecasting-kernels-only.zip  -d inputs
 
 k8s is a common container orchestrator witha healthy ecosystem.
 
-For repeatability and demo purposes i'll use minikube with Tailscale ingress to deploy the model and makei t accesible to the public internet. This can also be restirtied to a intranet as well.
+For repeatability and demo purposes I used minikube with Tailscale ingress to deploy the model and makei t accesible to the public internet. This can also be restirtied to a intranet as well.
 
 The `infra` folder contains a makefile that creates a minikube cluster and sets up the tailscale operator.
 
