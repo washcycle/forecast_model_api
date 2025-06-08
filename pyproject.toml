@@ -3,7 +3,7 @@ name = "forecast-model-api"
 version = "0.1.0"
 description = "This project provides a FastAPI application for serving machine learning a machine learning model to predict sales by date, store id, and item id."
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 dependencies = [
     "fastapi>=0.115.12",
     "lightgbm>=4.6.0",
@@ -24,3 +24,6 @@ analysis = [
     "statsmodels>=0.14.4",
 ]
 dev = ["isort>=6.0.1"]
+test = [
+    "pytest>=8.4.0",
+]
