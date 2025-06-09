@@ -1,3 +1,5 @@
+[![Build and Push](https://github.com/washcycle/forecast_model_api/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/washcycle/forecast_model_api/actions/workflows/docker-publish.yml)
+
 # Store Item Demand Forecasting
 
 Project seeks to build upon the data and model from the Kaggle Store Item Demand Forecasting Challenge.
