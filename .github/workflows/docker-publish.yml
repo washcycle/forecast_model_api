@@ -3,6 +3,10 @@ name: Build and Push Docker Image
 on:
   push:
     branches: [ main ]
+    paths:
+      - 'Dockerfile'
+      - '.github/workflows/docker-publish.yml'
+      - 'src/**'
   workflow_dispatch:
 
 jobs:
