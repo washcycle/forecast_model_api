@@ -1,6 +1,6 @@
 # Store Item Demand Forecasting
 
-Project seeks to build upon the data and model from the Store Item Demand Forecasting Challenge.
+Project seeks to build upon the data and model from the Kaggle Store Item Demand Forecasting Challenge.
 
 [Data] (https://www.kaggle.com/c/demand-forecasting-kernels-only/data)
 [Model Notebook](https://www.kaggle.com/code/ashishpatel26/light-gbm-demand-forecasting/notebook)
@@ -8,8 +8,8 @@ Project seeks to build upon the data and model from the Store Item Demand Foreca
 ## Prerequisites
 
 - Kaggle Account
-- Setup kaggle cli  `pip install kaggle`
-- Create API toekn in `https://www.kaggle.com/settings`
+- Setup kaggle CLI  `pip install kaggle`
+- Create API token in `https://www.kaggle.com/settings`
 - Python enviornment
 
 ## Project Structure
