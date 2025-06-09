@@ -41,7 +41,7 @@ unzip demand-forecasting-kernels-only.zip  -d inputs
 
 ## Model Deployment
 
-k8s is a common container orchestrator witha healthy ecosystem.
+k8s is a common container orchestrator with a healthy ecosystem.
 
 For repeatability and demo purposes I used minikube with Tailscale ingress to deploy the model and makei t accesible to the public internet. This can also be restirtied to a intranet as well.
 
