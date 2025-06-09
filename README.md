@@ -49,6 +49,8 @@ The `infra` folder contains a makefile that creates a minikube cluster and sets 
 
 The operator can deploy ingress to your tailnet, and there is a flag to make them `funnel` for public access.
 
+You will need a Tailscale OAUTH Client ID and Client Secret from here, https://login.tailscale.com/admin/settings/oauth with `device`, and `auth key` write permissions.
+
 *Install minikube and create cluster for this project*
 `make minikube`
 
@@ -56,6 +58,17 @@ The operator can deploy ingress to your tailnet, and there is a flag to make the
 `TS_CLIENT_ID=your_client_id TS_CLIENT_SECRET=your_client_secret make install-tailscale-operator`
 
 Used terraform for IaC (Infrastructure as Code) to deploy the model inside the local minikube cluster. Since this is a public repo, the image doens't need authentication to pull, but I added terraform to show how pull secrets can be used for private registries.
+
+*Deploy API*
+
+Create a terraform.tfvars file with the follow populated if pulling from a private GitHub repository.
+
+```
+github_username = "xxxxxx"
+github_token    = "xxxxxxxxx"
+```
+
+`make apply-terraform`
 
 ## API
 
@@ -119,6 +132,12 @@ Exampe:
   ]
 }
 ```
+
+# Troubleshooting
+
+Restart the minikube cluster if it's not running  and stopped container hasn't been removed.
+
+`minikube start -p forecast-model-cluster`
 
 # Contributions
 
