@@ -90,7 +90,7 @@ https://sales-forecaster.tigris-vibes.ts.net/status
 
 ## API Features
 
-*Input validation:* Item ID and Store ID validation based on what was in the trianing data, withh response with proper errors messages if ID exceeds allowed values.
+*Input validation:* Item ID and Store ID validation based on what was in the training data values, and will return a errors message if the Store ID or Itme ID has never been seen before.
 
 Exampe:
 
