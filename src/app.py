@@ -8,6 +8,8 @@ from fastapi.concurrency import asynccontextmanager
 from pydantic import BaseModel, Field, field_validator
 
 # Valid Store IDs and Item IDs for validation
+# Could fetch this externally, but for simplicity, we define them here.
+# Also the fetch could slow startup time and depending on latency and throughput might be suboptimal
 VALID_STORE_IDS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 VALID_ITEM_IDS = list(range(1, 51))
 
