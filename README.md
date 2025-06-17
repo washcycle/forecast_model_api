@@ -38,7 +38,7 @@ unzip demand-forecasting-kernels-only.zip  -d inputs
 
 - Fixed Facebook Prohet import in jupyter notebook
 - Created multistage docker container to minimize container footprint. This helps scale up deployments faster in a container ochestrators.
-- Wrapped latest FastAPI version around model and created predict endpoints.
+- Wrapped latest FastAPI version around model and created predict endpoints, and status endpoint.
 - Add isort to organize imports and ran on the src and analysis directory.
 
 ## Model Deployment
@@ -92,7 +92,7 @@ https://sales-forecaster.tigris-vibes.ts.net/status
 
 *Input validation:* Item ID and Store ID validation based on what was in the training data values, and will return a errors message if the Store ID or Itme ID has never been seen before.
 
-Exampe:
+**Exampe:**
 
 *Input*
 ```json
