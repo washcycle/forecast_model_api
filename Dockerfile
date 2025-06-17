@@ -1,5 +1,8 @@
 FROM python:3.12-slim AS builder
 
+ENV PYTHONUNBUFFERED=1 
+ENV PYTHONDONTWRITEBYTECODE=1
+
 WORKDIR /build
 
 COPY pyproject.toml pyproject.toml
@@ -13,7 +16,8 @@ RUN uv sync
 FROM python:3.12-slim AS runtime
 
 ENV PATH="/app/.venv/bin:$PATH"
-ENV PYTHONUNBUFFERED=1
+ENV PYTHONUNBUFFERED=1 
+ENV PYTHONDONTWRITEBYTECODE=1
 
 WORKDIR /app
 
