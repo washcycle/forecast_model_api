@@ -49,7 +49,7 @@ For repeatability and demo purposes I used minikube with Tailscale ingress to de
 
 The `infra` folder contains a makefile that creates a minikube cluster and sets up the tailscale operator.
 
-The operator can deploy ingress to your tailnet, and there is a flag to make them `funnel` for public access.
+The operator can deploy ingress to your tailnet, and there is a flag to make tag them with as a funnel `funnel` for public access. This isn't a production grade production endpoint, but it is delivered over TLS.
 
 You will need a Tailscale OAUTH Client ID and Client Secret from here, https://login.tailscale.com/admin/settings/oauth with `device`, and `auth key` write permissions.
 
