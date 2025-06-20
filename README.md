@@ -75,6 +75,8 @@ github_token    = "xxxxxxxxx"
 
 ## API
 
+Demonstration public internet facing API is runing on my local device on a minkikube cluster. It the links return a 404 it maybe need to be restarted.
+
 https://sales-forecaster.tigris-vibes.ts.net/
 
 **API Docs**
