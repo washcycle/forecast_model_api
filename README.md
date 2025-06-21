@@ -41,7 +41,7 @@ unzip demand-forecasting-kernels-only.zip  -d inputs
 # Steps
 
 - Fixed Facebook Prohet import in jupyter notebook
-- Created multistage docker container to minimize container footprint. This helps scale up deployments faster in a container ochestrators.
+- Created multistage docker container to minimize container footprint. This helps scale up deployments faster in a container ochestrators and minimizes vulnerabilities.
 - Wrapped latest FastAPI version around model and created predict endpoints, and status endpoint.
 - Add isort to organize imports and ran on the src and analysis directory.
 
