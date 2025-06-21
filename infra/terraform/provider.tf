@@ -9,5 +9,5 @@ terraform {
 
 provider "kubernetes" {
   config_path = "~/.kube/config"
-  config_context_cluster = "forecast-model-cluster"
+  # Remeber to check kubeconfig context so you don't accidentally deploy to the wrong cluster  
 }
