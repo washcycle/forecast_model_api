@@ -15,8 +15,7 @@ minikube:
 	fi
 
 install-tailscale-operator:
-	@echo "Installing Tailscale Operator via Helm..."
-	kubectl config use-context $(CLUSTER_CONTEXT)
+	@echo "Installing Tailscale Operator via Helm..."	
 	helm repo add tailscale https://pkgs.tailscale.com/helmcharts
 	helm repo update
 	helm upgrade --install tailscale-operator tailscale/tailscale-operator \
@@ -26,7 +25,11 @@ install-tailscale-operator:
 	  --set operatorConfig.hostname=$(CLUSTER_CONTEXT) \
 	  --set-string apiServerProxyConfig.mode="true" \
 	  --wait
-	tailscale configure kubeconfig $(CLUSTER_CONTEXT)
+	@if ! command -v tailscale >/dev/null 2>&1; then \
+		echo "Tailscale is not installed, skipping kubeconfig"; \
+	else \
+		tailscale configure kubeconfig $(CLUSTER_CONTEXT); \
+	fi
 
 apply-terraform:
 	@echo "Applying Terraform deployment for FastAPI app, HPA, and Tailscale ingress..."

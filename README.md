@@ -144,6 +144,10 @@ Restart the minikube cluster if it's not running  and stopped container hasn't b
 
 `minikube start -p forecast-model-cluster`
 
+# Self Hosting
+
+You can use k0s to setup a small single stack cluster for home use. Tailscale operator will still need to be installed and setup. However this can run on a headless machine or cloud VM and provide a more robust platform to allow others access either privately through the tailnet of publicly via the funnel. However, funnl doesn't provide a robust front door and it's highly suggested to move to some like a cloudflare tunnel or equivalent to provide front door security and firewall protections.
+
 # Contributions
 
 Commits use https://www.conventionalcommits.org/en/v1.0.0/
