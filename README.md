@@ -26,7 +26,7 @@ To keep things tidy the project structure is split by funtion:
   - `src` (source code for model deployment)
   - `analysis` (any interactive jupyter notebook or other exploratory work)
   - `infra` (any project specific deployment code)
-  - `docs` extra project documentation
+  - `docs` (extra project documentation)
 
 # Data
 
