@@ -10,9 +10,12 @@ Project seeks to build upon the data and model from the Kaggle Store Item Demand
 ## Prerequisites
 
 - Kaggle Account
+- Python 3.12+
 - Setup kaggle CLI  `pip install kaggle`
 - Create API token in `https://www.kaggle.com/settings`
-- Python enviornment
+  
+**Optional**
+- Tailscale
 
 ## Project Structure
 
