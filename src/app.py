@@ -37,6 +37,7 @@ class ForecastInput(BaseModel):
 
 # Get model (update path if needed), raise error if not found
 MODEL_PATH = os.environ.get("MODEL_PATH")
+print(f"Using model path: {MODEL_PATH}")
 if not MODEL_PATH or not os.path.isfile(MODEL_PATH):
     raise ValueError(f"Model path is invalid or file does not exist: {MODEL_PATH}")
 
