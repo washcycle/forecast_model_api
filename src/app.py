@@ -3,7 +3,7 @@ from datetime import datetime
 
 import lightgbm as lgb
 import pandas as pd
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.concurrency import asynccontextmanager
 from pydantic import BaseModel, Field, field_validator
 
@@ -63,21 +63,23 @@ app = FastAPI(lifespan=lifespan)
 
 @app.post("/predict")
 def forecast(input: ForecastInput, version: str = "v1"):
-    
     if version != "v1":
-        raise ValueError(f"Unsupported API version: {version}")
-    
+        return HTTPException(
+            status_code=404, detail=f"Unsupported API version: {version}"
+        )
+
     if version == "v1":
         return _version_v1(input)
 
+
 def _version_v1(input):
     features = {
-            "store": input.store,
-            "item": input.item,
-            "month": input.date.month,
-            "day": input.date.weekday(),
-            "year": input.date.year,
-        }
+        "store": input.store,
+        "item": input.item,
+        "month": input.date.month,
+        "day": input.date.weekday(),
+        "year": input.date.year,
+    }
 
     try:
         X = pd.DataFrame([features])
