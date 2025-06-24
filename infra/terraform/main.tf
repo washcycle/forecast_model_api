@@ -58,8 +58,9 @@ resource "kubernetes_deployment" "model" {
         }
 
         container {
-          name  = "model"
-          image = "ghcr.io/washcycle/forecast-model-api:latest"
+          name              = "model"
+          image             = "ghcr.io/washcycle/forecast-model-api:latest"
+          image_pull_policy = "Always"
 
           port {
             name           = "http"

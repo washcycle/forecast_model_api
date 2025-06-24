@@ -12,8 +12,8 @@ Project seeks to build upon the data and model from the Kaggle Store Item Demand
 - Kaggle Account
 - Python 3.12+
 - Setup kaggle CLI  `pip install kaggle`
-- Create API token in `https://www.kaggle.com/settings`
-  
+- Create API token in `https://www.kaggle.com/settings` 
+
 **Optional**
 - Tailscale
 
@@ -44,6 +44,15 @@ unzip demand-forecasting-kernels-only.zip  -d inputs
 - Created multistage docker container to minimize container footprint. This helps scale up deployments faster in a container ochestrators and minimizes vulnerabilities.
 - Wrapped latest FastAPI version around model and created predict endpoints, and status endpoint.
 - Add isort to organize imports and ran on the src and analysis directory.
+
+## Docker Setup
+
+*Multi-stage Build*
+Used a multistage build with `uv` pacakge manager. The first stage isntalls all the python packages and system libraries and the runtime stage copies them from the build stage.
+
+*Source Transfer Notes*
+There is a standard convetion that is assume for model and application files in the repo, assuming all futures models have the same structure we can deploy them with the same Dockerfile.
+We can make it more generic by using ARGs to set the model file name and paths if mantianing the same repo structure across projects is not possible.
 
 ## Model Deployment
 

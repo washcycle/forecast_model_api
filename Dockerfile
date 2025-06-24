@@ -15,6 +15,10 @@ RUN uv sync
 
 FROM python:3.12-slim AS runtime
 
+ARG MODEL_FILE="lgbm_model.txt"
+
+ENV MODEL_FILE=${MODEL_FILE}
+ENV MODLE_PATH="/app/${MODEL_FILE}"
 ENV PATH="/app/.venv/bin:$PATH"
 ENV PYTHONUNBUFFERED=1 
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -24,7 +28,7 @@ WORKDIR /app
 COPY --from=builder /build/.venv /app/.venv
 COPY --from=builder /usr/lib/x86_64-linux-gnu/libgomp.so.1 /usr/lib/x86_64-linux-gnu/libgomp.so.1
 
-COPY model/lgbm_model.txt /app/lgbm_model.txt
+COPY model/${MODEL_FILE} /app/${MODEL_FILE}
 
 RUN adduser --disabled-password --gecos '' app 
 
