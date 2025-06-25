@@ -32,5 +32,8 @@ jobs:
             - name: Install the project
               run: uv sync --locked --group test
 
-            - name: Run tests              
+            - name: Run tests       
+              env:
+                PYTHONPATH: src
+                MODEL_PATH: tests/test_lgbm_model_v1.txt
               run: uv run pytest
