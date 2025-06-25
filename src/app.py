@@ -6,6 +6,7 @@ import pandas as pd
 from fastapi import FastAPI, HTTPException
 from fastapi.concurrency import asynccontextmanager
 from pydantic import BaseModel, Field, field_validator
+from app_logger import log, logger
 
 # Valid Store IDs and Item IDs for validation
 # Could fetch this externally, but for simplicity, we define them here.
@@ -48,6 +49,7 @@ resources = {}
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    logger.info("Starting up the FastAPI application...")
     # Load the ML model
     try:
         resources["model"] = lgb.Booster(model_file=MODEL_PATH)
@@ -62,7 +64,8 @@ app = FastAPI(lifespan=lifespan)
 
 
 @app.post("/predict")
-def forecast(input: ForecastInput, version: str = "v1"):
+@log
+def forecast(input: ForecastInput, version: str = "v1"):    
     if version != "v1":
         return HTTPException(
             status_code=404, detail=f"Unsupported API version: {version}"
@@ -71,7 +74,7 @@ def forecast(input: ForecastInput, version: str = "v1"):
     if version == "v1":
         return _version_v1(input)
 
-
+@log
 def _version_v1(input):
     features = {
         "store": input.store,
