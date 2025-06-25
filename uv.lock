@@ -295,9 +295,6 @@ dev = [
 test = [
     { name = "pytest" },
 ]
-tests = [
-    { name = "pytest" },
-]
 
 [package.metadata]
 requires-dist = [
@@ -321,7 +318,6 @@ analysis = [
 ]
 dev = [{ name = "isort", specifier = ">=6.0.1" }]
 test = [{ name = "pytest", specifier = ">=8.4.0" }]
-tests = [{ name = "pytest", specifier = ">=8.4.0" }]
 
 [[package]]
 name = "h11"
